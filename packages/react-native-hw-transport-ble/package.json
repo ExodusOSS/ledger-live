@@ -1,0 +1,61 @@
+{
+  "name": "@exodus/ledgerhq-react-native-hw-transport-ble",
+  "version": "6.32.3-exodus.3",
+  "description": "Ledger Hardware Wallet Bluetooth BLE transport for React Native",
+  "keywords": [
+    "Ledger",
+    "LedgerWallet",
+    "NanoS",
+    "Blue",
+    "Hardware Wallet"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ExodusMovement/ledger-live.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ExodusMovement/ledger-live/issues"
+  },
+  "homepage": "https://github.com/ExodusMovement/ledger-live/tree/master/packages/react-native-hw-transport-ble",
+  "publishConfig": {
+    "access": "restricted"
+  },
+  "files": [
+    "lib",
+    "!**/*.spec.*",
+    "!**/*.test.*",
+    "!**/*.json",
+    "!**/__tests__/*",
+    "CHANGELOG.md",
+    "README.md"
+  ],
+  "main": "lib/BleTransport.js",
+  "types": "lib/BleTransport.d.ts",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "@exodus/ledgerhq-devices": "workspace:^",
+    "@exodus/ledgerhq-errors": "workspace:^",
+    "@ledgerhq/hw-transport": "^6.30.4",
+    "@ledgerhq/logs": "^6.12.0",
+    "react-native-ble-plx": "2.0.3",
+    "rxjs": "6.3.3",
+    "uuid": "^9.0.1"
+  },
+  "scripts": {
+    "clean": "rimraf lib",
+    "build": "run -T tsc",
+    "prewatch": "yarn build",
+    "watch": "run -T tsc --watch",
+    "lint": "run -T eslint ./src --no-error-on-unmatched-pattern --ext .ts,.tsx --cache",
+    "lint:fix": "run -T yarn lint --fix",
+    "test": "run -T jest --runInBand",
+    "prepublishOnly": "yarn run -T build --scope @exodus/ledgerhq-react-native-hw-transport-ble"
+  },
+  "gitHead": "dd0dea64b58e5a9125c8a422dcffd29e5ef6abec",
+  "devDependencies": {
+    "@types/uuid": "^9.0.5",
+    "documentation": "14.0.2",
+    "rimraf": "^4.4.1",
+    "source-map-support": "^0.5.21"
+  }
+}

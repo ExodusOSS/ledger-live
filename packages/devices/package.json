@@ -1,0 +1,72 @@
+{
+  "name": "@exodus/ledgerhq-devices",
+  "version": "8.1.0-exodus.4",
+  "description": "Ledger devices",
+  "license": "Apache-2.0",
+  "keywords": [
+    "Ledger"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ExodusMovement/ledger-live.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ExodusMovement/ledger-live/issues"
+  },
+  "homepage": "https://github.com/ExodusMovement/ledger-live/tree/master/packages/devices",
+  "publishConfig": {
+    "access": "restricted"
+  },
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "typesVersions": {
+    "*": {
+      "lib/*": [
+        "lib/*"
+      ],
+      "*": [
+        "lib/*"
+      ]
+    }
+  },
+  "exports": {
+    "./lib/*": "./lib/*.js",
+    "./lib/*.js": "./lib/*.js",
+    "./*": "./lib/*.js",
+    "./*.js": "./lib/*.js",
+    ".": "./lib/index.js",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib",
+    "!**/*.spec.*",
+    "!**/*.test.*",
+    "!**/*.json",
+    "!**/__tests__/*",
+    "CHANGELOG.md",
+    "README.md"
+  ],
+  "dependencies": {
+    "@exodus/ledgerhq-errors": "workspace:^",
+    "@ledgerhq/logs": "^6.12.0",
+    "semver": "^7.3.5"
+  },
+  "devDependencies": {
+    "@types/semver": "^7.3.9",
+    "documentation": "14.0.2",
+    "rimraf": "^4.4.1",
+    "source-map-support": "^0.5.21"
+  },
+  "scripts": {
+    "clean": "rimraf lib",
+    "build": "run -T tsc",
+    "prewatch": "yarn build",
+    "watch": "run -T tsc --watch",
+    "doc": "documentation readme src/** --section=API --pe ts --re ts --re d.ts",
+    "lint": "run -T eslint ./src --no-error-on-unmatched-pattern --ext .ts,.tsx --cache",
+    "lint:fix": "yarn lint --fix",
+    "test": "run -T jest",
+    "prepublishOnly": "yarn run -T build --scope @exodus/ledgerhq-devices"
+  },
+  "gitHead": "d9f70d7d90cf2c6456bd63becd5063ed64773507"
+}

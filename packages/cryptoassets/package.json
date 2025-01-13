@@ -1,0 +1,78 @@
+{
+  "name": "@exodus/ledgerhq-cryptoassets",
+  "version": "11.2.0-exodus.7",
+  "description": "Ledger crypto-assets list",
+  "keywords": [
+    "Ledger"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ExodusMovement/ledger-live.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ExodusMovement/ledger-live/issues"
+  },
+  "homepage": "https://github.com/ExodusMovement/ledger-live/tree/master/packages/cryptoassets",
+  "publishConfig": {
+    "access": "restricted"
+  },
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "files": [
+    "lib",
+    "!**/*.spec.*",
+    "!**/*.test.*",
+    "!**/__tests__/*",
+    "!**/crypto-assets-importer/*",
+    "!coverage/",
+    "CHANGELOG.md",
+    "README.md"
+  ],
+  "scripts": {
+    "clean": "rimraf lib lib-es",
+    "build": "run -T tsc",
+    "prewatch": "yarn build",
+    "watch": "run -T tsc --watch",
+    "doc": "documentation readme src/** --section=API --pe ts --re ts --re d.ts",
+    "lint": "eslint ./src --no-error-on-unmatched-pattern --ext .ts,.tsx --cache",
+    "lint:fix": "yarn lint --fix",
+    "test": "run -T jest",
+    "prepublishOnly": "yarn run -T build --scope @exodus/ledgerhq-cryptoassets"
+  },
+  "dependencies": {
+    "@exodus/axios-replacement": "^0.0.2",
+    "bs58check": "^2.1.2",
+    "invariant": "2"
+  },
+  "devDependencies": {
+    "@ledgerhq/types-cryptoassets": "7.8.0",
+    "@types/bs58check": "^2.1.0",
+    "documentation": "14.0.2",
+    "rimraf": "^4.4.1",
+    "source-map-support": "^0.5.21"
+  },
+  "typesVersions": {
+    "*": {
+      "*.json": [
+        "*.json"
+      ],
+      "*": [
+        "lib/*"
+      ],
+      "lib/*": [
+        "lib/*"
+      ]
+    }
+  },
+  "exports": {
+    "./lib/*": "./lib/*",
+    "./lib/*.js": "./lib/*.js",
+    "./lib/*.json": "./lib/*.json",
+    "./*": "./lib/*",
+    "./*.js": "./lib/*.js",
+    ".": "./lib/index.js",
+    "./package.json": "./package.json"
+  },
+  "license": "Apache-2.0",
+  "gitHead": "d9f70d7d90cf2c6456bd63becd5063ed64773507"
+}

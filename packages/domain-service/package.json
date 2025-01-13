@@ -1,0 +1,72 @@
+{
+  "name": "@exodus/ledgerhq-domain-service",
+  "description": "Ledger service responsible for domain handling",
+  "version": "1.1.15-exodus.8",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ExodusMovement/ledger-live.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ExodusMovement/ledger-live/issues"
+  },
+  "homepage": "https://github.com/ExodusMovement/ledger-live/tree/master/packages/domain-service",
+  "publishConfig": {
+    "access": "restricted"
+  },
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "typesVersions": {
+    "*": {
+      "*.json": [
+        "*.json"
+      ],
+      "*": [
+        "lib/*"
+      ],
+      "lib/*": [
+        "lib/*"
+      ]
+    }
+  },
+  "exports": {
+    "./lib/*": "./lib/*.js",
+    "./lib/*.js": "./lib/*.js",
+    "./*": {
+      "default": "./lib/*.js"
+    },
+    "./*.js": {
+      "default": "./lib/*.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "clean": "rm -rf lib lib-es",
+    "build": "run -T tsc",
+    "prewatch": "yarn build",
+    "watch": "run -T tsc --watch",
+    "lint": "run -T eslint ./src --no-error-on-unmatched-pattern --ext .ts,.tsx --cache",
+    "lint:fix": "yarn lint --fix",
+    "test": "cross-env TZ=America/New_York jest",
+    "unimported": "unimported",
+    "prepublishOnly": "yarn run -T build --scope @exodus/ledgerhq-domain-service"
+  },
+  "dependencies": {
+    "@exodus/axios-replacement": "^0.0.2",
+    "@exodus/eip55": "^2.1.1-exodus.0",
+    "@exodus/ledgerhq-errors": "workspace:^",
+    "@ledgerhq/logs": "^6.12.0"
+  },
+  "devDependencies": {
+    "@ledgerhq/types-cryptoassets": "7.8.0",
+    "@ledgerhq/types-live": "6.35.1",
+    "cross-env": "^7.0.3",
+    "eslint-plugin-jest": "^27.4.2",
+    "jest-environment-jsdom": "^28.1.3",
+    "react-test-renderer": "^18.2.0"
+  },
+  "gitHead": "d9f70d7d90cf2c6456bd63becd5063ed64773507"
+}

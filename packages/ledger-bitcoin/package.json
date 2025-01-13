@@ -1,0 +1,72 @@
+{
+  "name": "@exodus/ledger-bitcoin",
+  "version": "0.2.3-exodus.6",
+  "description": "Ledger Hardware Wallet Bitcoin Application Client",
+  "main": "lib/index.js",
+  "typings": "lib/index.d.ts",
+  "type": "module",
+  "repository": "https://github.com/ExodusMovement/ledger-live",
+  "homepage": "https://github.com/ExodusMovement/ledger-live/tree/master/packages/ledger-bitcoin",
+  "publishConfig": {
+    "access": "restricted"
+  },
+  "license": "Apache-2.0",
+  "keywords": [
+    "Ledger",
+    "LedgerWallet",
+    "btc",
+    "Bitcoin",
+    "NanoS",
+    "NanoX",
+    "Hardware Wallet"
+  ],
+  "scripts": {
+    "build": "run -T tsc -p tsconfig.json",
+    "fix": "run-s fix:*",
+    "fix:prettier": "prettier \"src/**/*.ts\" --write",
+    "fix:lint": "eslint src --ext .ts --fix",
+    "test": "run -T exodus-test --jest --esbuild",
+    "doc": "run-s doc:html && open-cli build/docs/index.html",
+    "doc:html": "typedoc src/ --exclude **/*.test.ts --target ES6 --mode file --out build/docs",
+    "doc:json": "typedoc src/ --exclude **/*.test.ts --target ES6 --mode file --json build/docs/typedoc.json",
+    "prepublishOnly": "yarn run -T build --scope @exodus/ledger-bitcoin"
+  },
+  "engines": {
+    "node": ">=14"
+  },
+  "dependencies": {
+    "@exodus/bitcoinjs": "^1.3.0",
+    "bip32-path": "^0.4.2"
+  },
+  "devDependencies": {
+    "@ledgerhq/hw-transport": "^6.30.4",
+    "@ledgerhq/hw-transport-node-speculos-http": "^6.28.4",
+    "@ledgerhq/logs": "^6.10.0",
+    "codecov": "^3.5.0",
+    "cspell": "^4.1.0",
+    "eslint": "^7.8.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-eslint-comments": "^3.2.0",
+    "eslint-plugin-functional": "^3.0.2",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-jest": "^26.1.1",
+    "npm-run-all": "^4.1.5",
+    "open-cli": "^6.0.1",
+    "prettier": "^2.1.1",
+    "standard-version": "^9.0.0",
+    "typedoc": "^0.19.0"
+  },
+  "files": [
+    "lib",
+    "!**/*.spec.*",
+    "!**/*.test.*",
+    "!**/*.json",
+    "!**/__tests__/*",
+    "CHANGELOG.md",
+    "README.md"
+  ],
+  "prettier": {
+    "singleQuote": true
+  },
+  "gitHead": "d9f70d7d90cf2c6456bd63becd5063ed64773507"
+}

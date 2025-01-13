@@ -1,0 +1,48 @@
+{
+  "name": "@exodus/ledgerhq-errors",
+  "version": "6.16.0-exodus.2",
+  "description": "Ledger common errors",
+  "license": "Apache-2.0",
+  "keywords": [
+    "Ledger"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ExodusMovement/ledger-live.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ExodusMovement/ledger-live/issues"
+  },
+  "homepage": "https://github.com/ExodusMovement/ledger-live/tree/master/packages/errors",
+  "publishConfig": {
+    "access": "restricted"
+  },
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "files": [
+    "lib",
+    "!**/*.spec.*",
+    "!**/*.test.*",
+    "!**/*.json",
+    "!**/__tests__/*",
+    "CHANGELOG.md",
+    "README.md"
+  ],
+  "scripts": {
+    "clean": "rimraf lib",
+    "build": "run -T tsc",
+    "prewatch": "yarn build",
+    "watch": "run -T tsc --watch",
+    "doc": "documentation readme src/** --section=API --pe ts --re ts --re d.ts",
+    "lint": "run -T eslint ./src --no-error-on-unmatched-pattern --ext .ts,.tsx --cache",
+    "lint:fix": "yarn lint --fix",
+    "test": "run -T jest",
+    "prepublishOnly": "yarn run -T build --scope @exodus/ledgerhq-errors"
+  },
+  "gitHead": "dd0dea64b58e5a9125c8a422dcffd29e5ef6abec",
+  "devDependencies": {
+    "documentation": "14.0.2",
+    "rimraf": "^4.4.1",
+    "source-map-support": "^0.5.21"
+  }
+}
